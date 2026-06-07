@@ -1,0 +1,275 @@
+/* ── Reset & base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #0a0a0f;
+  color: #e8e8f0;
+  min-height: 100vh;
+}
+
+/* ── App shell ── */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── Navbar ── */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.9rem 2rem;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #e50914;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.nav-links li {
+  cursor: pointer;
+  font-size: 0.95rem;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.nav-links li:hover { opacity: 1; }
+
+.menu-btn {
+  background: none;
+  border: none;
+  color: #e8e8f0;
+  font-size: 1.4rem;
+  cursor: pointer;
+  flex: 1;
+  text-align: left;
+}
+
+/* Window size badge in the top-right corner of the nav */
+.size-badge {
+  margin-left: auto;
+  background: rgba(229, 9, 20, 0.15);
+  border: 1px solid rgba(229, 9, 20, 0.4);
+  color: #e50914;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Hero ── */
+.hero {
+  background: linear-gradient(
+    135deg,
+    #0a0a0f 0%,
+    #0f3460 40%,
+    #533483 70%,
+    #0a0a0f 100%
+  );
+  padding: 4rem 2rem 3rem;
+  min-height: 340px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.mobile .hero {
+  padding: 2rem 1rem 1.5rem;
+  min-height: 220px;
+}
+
+.hero-content { max-width: 640px; }
+
+.hero-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #46d369;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+}
+
+.mobile .hero-title { font-size: 1.8rem; }
+
+.hero-genre {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 0.8rem;
+}
+
+.hero-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 1.2rem;
+  max-width: 520px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-play, .btn-more {
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s;
+}
+
+.btn-play {
+  background: #e50914;
+  color: #fff;
+}
+
+.btn-more {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.btn-play:hover, .btn-more:hover { opacity: 0.85; }
+
+/* ── Layout info strip ── */
+.layout-strip {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: rgba(255,255,255,0.04);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 0.6rem 2rem;
+  font-size: 0.85rem;
+}
+
+.mobile .layout-strip { padding: 0.6rem 1rem; gap: 0.5rem; }
+
+.layout-label {
+  font-weight: 700;
+  color: #46d369;
+}
+
+.size-display { color: #e8e8f0; }
+.size-display strong { color: #e50914; }
+
+.breakpoint-note { color: #666; font-size: 0.78rem; }
+
+/* ── Trending section ── */
+.trending {
+  padding: 1.5rem 2rem 2rem;
+  flex: 1;
+}
+
+.mobile .trending { padding: 1rem; }
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Desktop: horizontal scrolling row */
+.cards-row {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
+}
+
+/* Mobile: 2-column grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+/* Individual card */
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  width: 180px;       /* desktop card width */
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.cards-grid .card {
+  width: 100%;        /* grid cards fill their column */
+}
+
+.card:hover { transform: scale(1.04); }
+
+.card-thumb {
+  height: 100px;
+  background: rgba(255,255,255,0.05);
+}
+
+.mobile .card-thumb { height: 70px; }
+
+.card-info {
+  padding: 0.5rem 0.6rem;
+}
+
+.card-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-genre {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 0.15rem;
+}
+
+/* ── Footer ── */
+.footer {
+  padding: 1.2rem 2rem;
+  background: rgba(0,0,0,0.4);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  font-size: 0.8rem;
+  color: #555;
+  text-align: center;
+}
+
+.footer-sub {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+}
